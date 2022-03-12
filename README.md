@@ -1,3 +1,6 @@
+## FORK
+
+End Goal: Green Rupees
 
 ## About Wind Waker Randomizer
 
