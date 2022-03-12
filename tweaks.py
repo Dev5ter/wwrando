@@ -212,6 +212,12 @@ def allow_all_items_to_be_field_items(self):
     data = BytesIO(f.read())
   self.add_new_raw_file("files/res/Object/Vscroll.arc", data)
 
+def fix_day_night_cycle(self):
+  # Sets the cycle to always be true, with ot without necessary items
+  self.dol.write_data(write_float, 0x801908e4, 1.0)
+  # Thank you, Gamma, for necessary address
+
+
 def remove_shop_item_forced_uniqueness_bit(self):
   # Some shop items have a bit set that disallows you from buying the item if you already own one of that item.
   # This can be undesirable depending on what we randomize the items to be, so we unset this bit.

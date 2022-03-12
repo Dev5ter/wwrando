@@ -1,5 +1,10 @@
 # Can't use logic's PROGRESS_ITEMS because there's some items that we can't start with, and also because progressive items require special handling.
 REGULAR_ITEMS = [
+  "Wind Waker",
+  "Wind's Requiem",
+  "Ballad of Gales",
+  "Song of Passing",
+
   "Telescope",
   "Magic Armor",
   "Hero's Charm",

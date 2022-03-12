@@ -151,11 +151,11 @@ class Randomizer:
     
     # Starting items. This list is read by the Logic when initializing your currently owned items list.
     self.starting_items = [
-      "Wind Waker",
-      "Wind's Requiem",
-      "Ballad of Gales",
-      "Song of Passing",
-      "Boat's Sail",
+      #"Wind Waker",
+      #"Wind's Requiem",
+      #"Ballad of Gales",
+      #"Song of Passing",
+      "Boat's Sail"#,
     ]
     self.starting_items += self.options.get("starting_gear", [])
     
@@ -465,6 +465,7 @@ class Randomizer:
     tweaks.start_ship_at_outset(self)
     tweaks.fix_deku_leaf_model(self)
     tweaks.allow_all_items_to_be_field_items(self)
+    tweaks.fix_day_night_cycle(self)
     tweaks.remove_shop_item_forced_uniqueness_bit(self)
     tweaks.remove_forsaken_fortress_2_cutscenes(self)
     tweaks.make_items_progressive(self)
