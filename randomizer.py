@@ -426,7 +426,7 @@ class Randomizer:
     yield("Saving items...", options_completed)
     if self.randomize_items and not self.dry_run:
       items.write_changed_items(self)
-      tweaks.randomize_and_update_hints(self)
+      #tweaks.randomize_and_update_hints(self)
     
     if not self.dry_run:
       self.apply_necessary_post_randomization_tweaks()
@@ -1035,36 +1035,36 @@ class Randomizer:
   def write_spoiler_log(self):
     if self.no_logs:
       # We still calculate progression spheres even if we're not going to write them anywhere to catch more errors in testing.
-      self.calculate_playthrough_progression_spheres()
+      #self.calculate_playthrough_progression_spheres()
       return
     
     spoiler_log = self.get_log_header()
     
     # Write progression spheres.
-    spoiler_log += "Playthrough:\n"
-    progression_spheres = self.calculate_playthrough_progression_spheres()
-    all_progression_sphere_locations = [loc for locs in progression_spheres for loc in locs]
-    zones, max_location_name_length = self.get_zones_and_max_location_name_len(all_progression_sphere_locations)
-    format_string = "      %-" + str(max_location_name_length+1) + "s %s\n"
-    for i, progression_sphere in enumerate(progression_spheres):
-      spoiler_log += "%d:\n" % (i+1)
-      
-      for zone_name, locations_in_zone in zones.items():
-        if not any(loc for (loc, _) in locations_in_zone if loc in progression_sphere):
-          # No locations in this zone are used in this sphere.
-          continue
-        
-        spoiler_log += "  %s:\n" % zone_name
-        
-        for (location_name, specific_location_name) in locations_in_zone:
-          if location_name in progression_sphere:
-            if location_name == "Ganon's Tower - Rooftop":
-              item_name = "Defeat Ganondorf"
-            else:
-              item_name = self.logic.done_item_locations[location_name]
-            spoiler_log += format_string % (specific_location_name + ":", item_name)
-      
-    spoiler_log += "\n\n\n"
+    #spoiler_log += "Playthrough:\n"
+    #progression_spheres = self.calculate_playthrough_progression_spheres()
+    #all_progression_sphere_locations = [loc for locs in progression_spheres for loc in locs]
+    #zones, max_location_name_length = self.get_zones_and_max_location_name_len(all_progression_sphere_locations)
+    #format_string = "      %-" + str(max_location_name_length+1) + "s %s\n"
+    #for i, progression_sphere in enumerate(progression_spheres):
+    #  spoiler_log += "%d:\n" % (i+1)
+    #  
+    #  for zone_name, locations_in_zone in zones.items():
+    #    if not any(loc for (loc, _) in locations_in_zone if loc in progression_sphere):
+    #      # No locations in this zone are used in this sphere.
+    #      continue
+    #    
+    #    spoiler_log += "  %s:\n" % zone_name
+    #    
+    #    for (location_name, specific_location_name) in locations_in_zone:
+    #      if location_name in progression_sphere:
+    #        if location_name == "Ganon's Tower - Rooftop":
+    #          item_name = "Defeat Ganondorf"
+    #        else:
+    #          item_name = self.logic.done_item_locations[location_name]
+    #        spoiler_log += format_string % (specific_location_name + ":", item_name)
+    #  
+    #spoiler_log += "\n\n\n"
     
     # Write item locations.
     spoiler_log += "All item locations:\n"

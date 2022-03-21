@@ -2,52 +2,59 @@
 import os
 import re
 from collections import OrderedDict
+import not_supported as ns
 
 from fs_helpers import *
 
 def randomize_items(self):
   print("Randomizing items...")
   
-  if self.options.get("race_mode"):
-    randomize_boss_rewards(self)
+ # if self.options.get("race_mode"):
+  #  randomize_boss_rewards(self)
   
-  if not self.options.get("keylunacy"):
-    randomize_dungeon_items(self)
+  #if not self.options.get("keylunacy"):
+  #  randomize_dungeon_items(self)
   
-  randomize_progression_items(self)
+  #randomize_progression_items(self)
   
   # Place unique non-progress items.
-  while self.logic.unplaced_nonprogress_items:
-    accessible_undone_locations = self.logic.get_accessible_remaining_locations()
+ # while self.logic.unplaced_nonprogress_items:
+ #   accessible_undone_locations = self.logic.get_accessible_remaining_locations()
     
-    item_name = self.rng.choice(self.logic.unplaced_nonprogress_items)
+ #   item_name = self.rng.choice(self.logic.unplaced_nonprogress_items)
     
-    possible_locations = self.logic.filter_locations_valid_for_item(accessible_undone_locations, item_name)
+ #   possible_locations = self.logic.filter_locations_valid_for_item(accessible_undone_locations, item_name)
     
-    if not possible_locations:
-      raise Exception("No valid locations left to place non-progress items!")
+ #   if not possible_locations:
+ #     raise Exception("No valid locations left to place non-progress items!")
     
-    location_name = self.rng.choice(possible_locations)
-    self.logic.set_location_to_item(location_name, item_name)
+ #   location_name = self.rng.choice(possible_locations)
+ #   self.logic.set_location_to_item(location_name, item_name)
   
-  accessible_undone_locations = self.logic.get_accessible_remaining_locations()
-  inaccessible_locations = [loc for loc in self.logic.remaining_item_locations if loc not in accessible_undone_locations]
-  if inaccessible_locations:
-    print("Inaccessible locations:")
-    for location_name in inaccessible_locations:
-      print(location_name)
+ # accessible_undone_locations = self.logic.get_accessible_remaining_locations()
+ # inaccessible_locations = [loc for loc in self.logic.remaining_item_locations if loc not in accessible_undone_locations]
+ # if inaccessible_locations:
+ #   print("Inaccessible locations:")
+ #   for location_name in inaccessible_locations:
+ #     print(location_name)
   
   # Fill remaining unused locations with consumables (Rupees, spoils, and bait).
   locations_to_place_consumables_at = self.logic.remaining_item_locations.copy()
-  for location_name in locations_to_place_consumables_at:
-    possible_items = self.logic.filter_items_valid_for_location(self.logic.unplaced_fixed_consumable_items, location_name)
-    if len(possible_items) == 0:
-      possible_items = self.logic.filter_items_valid_for_location(self.logic.duplicatable_consumable_items, location_name)
-      if len(possible_items) == 0:
-        raise Exception("No valid consumable items for location %s" % location_name)
-    
-    item_name = self.rng.choice(possible_items)
-    self.logic.set_location_to_item(location_name, item_name)
+ # for location_name in locations_to_place_consumables_at:
+ #   possible_items = self.logic.filter_items_valid_for_location(self.logic.unplaced_fixed_consumable_items, location_name)
+ #   if len(possible_items) == 0:
+ #     possible_items = self.logic.filter_items_valid_for_location(self.logic.duplicatable_consumable_items, location_name)
+ #     if len(possible_items) == 0:
+ #       raise Exception("No valid consumable items for location %s" % location_name)
+ #   
+ #   item_name = self.rng.choice(possible_items)
+ #   self.logic.set_location_to_item(location_name, item_name)
+  for sad in ns.locations_not_supported:
+    self.logic.set_location_to_item(sad, "Red Rupee")
+    locations_to_place_consumables_at.remove(sad)
+
+  for loc in locations_to_place_consumables_at:
+    self.logic.set_location_to_item(loc, "Green Rupee")
 
 def randomize_boss_rewards(self):
   # Try to generate dungeon boss reward locations until a valid set of locations is found.
