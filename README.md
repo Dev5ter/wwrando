@@ -1,6 +1,7 @@
 ## FORK
 
-End Goal: Green Rupees Everywhere
+Supported Checks are Green Rupees.
+Unsupported Checks are Red Rupees.
 
 ## About Wind Waker Randomizer
 
