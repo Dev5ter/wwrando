@@ -53,6 +53,12 @@ def randomize_items(self):
     self.logic.set_location_to_item(sad, "Red Rupee")
     locations_to_place_consumables_at.remove(sad)
 
+  self.logic.set_location_to_item("Rock Spire Isle - Beedle's Special Shop Ship - 950 Rupee Item", "Silver Rupee")
+  self.logic.set_location_to_item("Rock Spire Isle - Beedle's Special Shop Ship - 900 Rupee Item", "Orange Rupee")
+  locations_to_place_consumables_at.remove("Rock Spire Isle - Beedle's Special Shop Ship - 950 Rupee Item")
+  locations_to_place_consumables_at.remove("Rock Spire Isle - Beedle's Special Shop Ship - 900 Rupee Item")
+
+
   for loc in locations_to_place_consumables_at:
     self.logic.set_location_to_item(loc, "Green Rupee")
 
