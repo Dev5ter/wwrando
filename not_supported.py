@@ -57,5 +57,13 @@ locations_not_supported = [
 
     "The Great Sea - Beedle's Shop Ship - 20 Rupee Item",
     "The Great Sea - Salvage Corp Gift",
-    "The Great Sea - Goron Trading Reward"
+    "The Great Sea - Goron Trading Reward",
+
+    #Locations that can be supported, but are finiky
+    "Seven-Star Isles - Big Octo",
+    "Fire Mountain - Big Octo",
+    "Private Oasis - Big Octo",
+    "Tingle Island - Big Octo",
+    "Diamond Steppe Island - Big Octo",
+    "Rock Spire Isle - Southeast Gunboat"
 ]
