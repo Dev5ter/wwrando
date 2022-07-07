@@ -65,5 +65,6 @@ locations_not_supported = [
     "Private Oasis - Big Octo",
     "Tingle Island - Big Octo",
     "Diamond Steppe Island - Big Octo",
-    "Rock Spire Isle - Southeast Gunboat"
+    "Rock Spire Isle - Southeast Gunboat",
+    "Needle Rock Isle - Golden Gunboat"
 ]
